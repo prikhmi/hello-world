@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.avis.drools</groupId>
-  <artifactId>RevenueSegmentationRule</artifactId>
+  <artifactId>RevenueSegmentationRules</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>kjar</packaging>
-  <name>RevenueSegmentationRule</name>
-  <description>Revenue Segmentation Rule</description>
+  <name>RevenueSegmentationRules</name>
+  <description>Revenue Segmentation Rules</description>
   <dependencies>
     <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
