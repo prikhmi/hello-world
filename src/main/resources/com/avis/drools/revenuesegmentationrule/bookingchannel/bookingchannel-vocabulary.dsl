@@ -12,24 +12,6 @@
 [condition][]- Brand is "{brand}"=brand=="{brand}"
 [condition][]- Booking location ID is not {number}=bookingLocationId!={number}
 [condition][]- Booking Channel is not "{bookingChannel}"=bookingChannel!="{bookingChannel}"
-
-[condition][]- Length of rental is less than {number} days=lengthOfRental < {number}
-[condition][]- AWD Type is equals to {AWD} = buildupAWDtype=="{AWD}"
-[condition][]- check-out is on  between {day1} anytime and {day2} {time1} =eval(verifyCheckOutDate(bookingData,"{day1}","{day2}","{time1}"))==true
-[condition][]- check-in is on  between {day1} anytime and {day2} {time1} =eval(verifyCheckInDate(bookingData,"{day1}","{day2}","{time1}"))
-
-[condition][]- Inbound dimension  is "{inbound}"=inbound=="{inbound}"
-
-[condition][]- Checkin Rate Category 1 is {categories} =checkinRateCategory1 in ({categories})
-
-[condition][]- person is {years} years old=Age (value in ({years})) 
-
-
-[condition][]- Distribution Channel is "{derivedChannel}"=derivedChannel=="{derivedChannel}"
-[condition][]- Distribution Channel is either "{derivedChannel1}" Or "{derivedChannel2}"=derivedChannel=="{derivedChannel1}" || derivedChannel=="{derivedChannel2}"
-
-
-
 [consequence][bookingData] Set Derived Channel to "{derivedChannel}"=modify(bookingData) \{setDerivedChannel("{derivedChannel}")\} 
 [consequence][bookingData] Set Derived Segment to "{derivedSegment}"=modify(bookingData) \{setDerivedSegment("{derivedSegment}")\} 
-[consequence][]logRule=System.out.println("Priya - the rule that executed is: " + drools.getRule());
+[consequence][]logRule=System.out.println("The rule that executed is: " + drools.getRule());
