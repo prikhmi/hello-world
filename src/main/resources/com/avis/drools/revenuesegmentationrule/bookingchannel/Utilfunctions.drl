@@ -1,5 +1,5 @@
-package com.avisbudget.drools.revenuesegmentationrules;
-import com.avisbudget.drools.model.BookingData;
+package com.avis.drools.revenuesegmentationrule.bookingchannel;
+import com.avis.drools.model.BookingData;
 import java.time.*;
 import java.time.format.*;
 import java.time.temporal.*;
