@@ -27,7 +27,6 @@
           <header>Request type</header>
           <constraintValueType>1</constraintValueType>
           <factField>requestType</factField>
-          <fieldType>String</fieldType>
           <operator>in</operator>
           <parameters/>
         </condition-column52>
@@ -42,7 +41,6 @@
           <header>Reservation Station Number</header>
           <constraintValueType>1</constraintValueType>
           <factField>reservationStationNumber</factField>
-          <fieldType>Integer</fieldType>
           <operator>==</operator>
           <parameters/>
         </condition-column52>
@@ -57,7 +55,6 @@
           <header>Station Type of Booking Location</header>
           <constraintValueType>1</constraintValueType>
           <factField>stationTypeOfBookingLocation</factField>
-          <fieldType>String</fieldType>
           <operator>in</operator>
           <parameters/>
         </condition-column52>
@@ -72,7 +69,6 @@
           <header>Booking Source</header>
           <constraintValueType>1</constraintValueType>
           <factField>bookingSource</factField>
-          <fieldType>String</fieldType>
           <operator>==</operator>
           <parameters/>
         </condition-column52>
@@ -87,7 +83,6 @@
           <header>Booking Location</header>
           <constraintValueType>1</constraintValueType>
           <factField>bookingLocation</factField>
-          <fieldType>String</fieldType>
           <operator>==</operator>
           <parameters/>
         </condition-column52>
@@ -102,7 +97,6 @@
           <header>Brand</header>
           <constraintValueType>1</constraintValueType>
           <factField>brand</factField>
-          <fieldType>String</fieldType>
           <operator>in</operator>
           <parameters/>
         </condition-column52>
@@ -117,7 +111,6 @@
           <header>Booking location Id</header>
           <constraintValueType>1</constraintValueType>
           <factField>bookingLocationId</factField>
-          <fieldType>Integer</fieldType>
           <operator>!=</operator>
           <parameters/>
         </condition-column52>
@@ -132,7 +125,6 @@
           <header>Booking station</header>
           <constraintValueType>1</constraintValueType>
           <factField>bookingStation</factField>
-          <fieldType>String</fieldType>
           <operator>in</operator>
           <parameters/>
         </condition-column52>
@@ -147,7 +139,6 @@
           <header>Booking Channel</header>
           <constraintValueType>1</constraintValueType>
           <factField>bookingChannel</factField>
-          <fieldType>String</fieldType>
           <operator>!=</operator>
           <parameters/>
         </condition-column52>
@@ -239,11 +230,11 @@
   <imports>
     <imports>
       <org.kie.soup.project.datamodel.imports.Import>
-        <type>com.avisbudget.drools.model.BookingData</type>
+        <type>com.avis.drools.model.BookingData</type>
       </org.kie.soup.project.datamodel.imports.Import>
     </imports>
   </imports>
-  <packageName>com.avisbudget.drools.revenuesegmentationrules</packageName>
+  <packageName>com.avis.drools.revenuesegmentationrule.bookingchannel</packageName>
   <tableFormat>EXTENDED_ENTRY</tableFormat>
   <hitPolicy>RULE_ORDER</hitPolicy>
   <data>
@@ -265,9 +256,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">0</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>0</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
@@ -11465,9 +11455,8 @@
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
-        <valueNumeric class="int">7254</valueNumeric>
-        <valueString></valueString>
-        <dataType>NUMERIC_INTEGER</dataType>
+        <valueString>7254</valueString>
+        <dataType>STRING</dataType>
         <isOtherwise>false</isOtherwise>
       </value>
       <value>
