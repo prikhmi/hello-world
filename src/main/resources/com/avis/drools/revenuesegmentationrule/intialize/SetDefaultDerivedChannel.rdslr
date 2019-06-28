@@ -1,6 +1,7 @@
-package com.avisbudget.drools.revenuesegmentationrules;
+package com.avis.drools.revenuesegmentationrule.intialize;
 
 import java.lang.Number;
+import com.avis.drools.model.BookingData;
 
 rule "SetDefaultDerivedChannel"
 	dialect "mvel"
