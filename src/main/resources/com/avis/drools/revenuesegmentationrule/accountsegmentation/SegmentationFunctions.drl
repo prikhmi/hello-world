@@ -1,0 +1,21 @@
+package com.avisbudget.drools.revenuesegmentationrules.accountsegmentations;
+import com.avisbudget.drools.model.BookingData;
+import java.time.*;
+import java.time.format.*;
+import java.time.temporal.*;
+
+function boolean checkSTCode(BookingData bookingData, String[] values1) {
+	int count = 0;
+		if (bookingData.getBuildupStCode() != null && values1!=null) {
+			for (String val : values1) {
+			    System.out.println("val = " + val + "Length = " + val.length());
+			    if (val.equals(bookingData.getBuildupStCode().substring(0, val.length())))
+					count++;
+			}
+		}
+		System.out.println("count" + count);
+		if(count>0)
+			return true;
+		return false;
+	}
+
