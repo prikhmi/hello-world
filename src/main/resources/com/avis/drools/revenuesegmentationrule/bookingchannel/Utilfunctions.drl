@@ -1,0 +1,121 @@
+package com.avis.drools.revenuesegmentationrule.bookingchannel;
+import com.avis.drools.model.BookingData;
+import java.time.*;
+import java.time.format.*;
+import java.time.temporal.*;
+
+function boolean beforeDateFunction(BookingData bookingData,String day) {
+   DateTimeFormatter ruleDateFormatter = DateTimeFormatter.ofPattern("ddMMMyyyy");
+   DateTimeFormatter bookingDateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+   
+ 
+   LocalDate bookingDate=LocalDate.parse(bookingData.getBookingDate(),bookingDateFormatter);
+   LocalDate ruleDate = LocalDate.parse(day, ruleDateFormatter);
+	//	System.out.println("bookingDate = " + bookingDate + " ,   ruleDate = " + ruleDate);
+		if (bookingDate.isBefore(ruleDate)) {
+		//	System.out.println("Before date");
+			return true;
+		} else {
+		//	System.out.println("After date");
+			return false;
+		}
+ }
+ 
+    function int countChar(String name) {
+    return name.length();  
+    }
+
+   function boolean verifyCheckOutDate(BookingData bookingData,String day1, String day2, String time1) {
+   	System.out.println("--------------------verify check OUT date ----------------------------------");
+        if (bookingData.getCheckoutDate() != null && bookingData.getCheckoutTime()!=null) {
+
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			LocalDateTime checkDateTime = LocalDate.parse(bookingData.getCheckoutDate(), dtf).atTime(LocalTime.parse(bookingData.getCheckoutTime()));
+			DayOfWeek startDay = DayOfWeek.valueOf(day1.toUpperCase()), endDay = DayOfWeek.valueOf(day2.toUpperCase());
+
+		//	System.out.println(startDay.toString() + endDay.toString());
+
+			System.out.println("checkOutDateTime = " + checkDateTime.getDayOfWeek() + " = " + checkDateTime);
+			LocalDate tdate = checkDateTime.toLocalDate();
+			LocalDate ld = LocalDate.of(tdate.getYear(), tdate.getMonth(), tdate.getDayOfMonth());
+
+			LocalDateTime startdate = null;
+			
+			
+			if(checkDateTime.getDayOfWeek().toString().equals(day1.toUpperCase()))
+				startdate = checkDateTime.toLocalDate().atTime(LocalTime.parse("00:00:00"));
+			else
+
+				startdate = ld.with(TemporalAdjusters.previous(startDay)).atTime(LocalTime.parse("00:00:00"));
+
+			LocalDateTime enddate = startdate.toLocalDate().with(TemporalAdjusters.next(endDay))
+					.atTime(LocalTime.parse(time1));
+
+			System.out.println("startdate = " + startdate.getDayOfWeek() + " = " + startdate + "\n" + "enddate = "
+					+ enddate.getDayOfWeek() + " = " + enddate);
+
+			if (checkDateTime.isAfter(startdate) && (checkDateTime.isBefore(enddate) || checkDateTime.isEqual(enddate)))
+				return true;
+			else
+				return false;
+
+		
+		} else {
+			return false;
+		}
+   
+   
+    }
+    
+    
+     function boolean verifyCheckInDate(BookingData bookingData,String day1, String day2, String time1) {
+   	System.out.println("--------------------verify check IN date ----------------------------------");
+
+      if (bookingData.getCheckinDate() != null && bookingData.getCheckinTime()!=null) {
+
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			LocalDateTime checkDateTime = LocalDate.parse(bookingData.getCheckinDate(), dtf).atTime(LocalTime.parse(bookingData.getCheckinTime()));
+			DayOfWeek startDay = DayOfWeek.valueOf(day1.toUpperCase()), endDay = DayOfWeek.valueOf(day2.toUpperCase());
+
+		//	System.out.println(startDay.toString() + endDay.toString());
+
+			System.out.println("checkInDateTime = " + checkDateTime.getDayOfWeek() + " = " + checkDateTime);
+			LocalDate tdate = checkDateTime.toLocalDate();
+			LocalDate ld = LocalDate.of(tdate.getYear(), tdate.getMonth(), tdate.getDayOfMonth());
+
+			LocalDateTime startdate = null;
+			
+			
+			if(checkDateTime.getDayOfWeek().toString().equals(day1.toUpperCase()))
+				startdate = checkDateTime.toLocalDate().atTime(LocalTime.parse("00:00:00"));
+			else
+
+				startdate = ld.with(TemporalAdjusters.previous(startDay)).atTime(LocalTime.parse("00:00:00"));
+
+			LocalDateTime enddate = startdate.toLocalDate().with(TemporalAdjusters.next(endDay))
+					.atTime(LocalTime.parse(time1));
+
+			System.out.println("startdate = " + startdate.getDayOfWeek() + " = " + startdate + "\n" + "enddate = "
+					+ enddate.getDayOfWeek() + " = " + enddate);
+
+			if (checkDateTime.isAfter(startdate) && (checkDateTime.isBefore(enddate) || checkDateTime.isEqual(enddate)))
+				return true;
+			else
+			    return false;
+
+		
+		} else {
+			return false;
+		}
+           
+    }
+    
+    
+/*
+    rule 'using beforeDateFunction'
+    when
+        bookingData: BookingData (eval(beforeDateFunction(bookingData,"2018-11-11")==true))
+    then
+        System.out.println("beforeDateFunction executed");
+        System.out.println("Priya - the rule that executed is: " + drools.getRule());
+    end*/

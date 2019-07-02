@@ -1,0 +1,14 @@
+package com.avis.drools.revenuesegmentationrule.intialize;
+
+import java.lang.Number;
+import com.avis.drools.model.BookingData;
+
+rule "SetDefaultDerivedChannel"
+	dialect "mvel"
+	salience 100
+	when
+		There is a Booking
+	then
+		Set Derived Channel to "ALL OTHER"
+		logRule
+end
